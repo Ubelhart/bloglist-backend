@@ -1,12 +1,14 @@
 {
-  "name": "bloglist-backend",
+  "name": "blogs-backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "build:ui": "rm -rf dist && cd ../bloglist-frontend/ && npm run build && cp -r dist ../bloglist-backend",
     "test": "cross-env NODE_ENV=test node --test",
-    "test:watch": "npm run test -- --watch tests/blog_api.test.js"
+    "test:watch": "npm run test -- --watch tests/blog_api.test.js",
+    "start:test": "cross-env NODE_ENV=test nodemon index.js"
   },
   "keywords": [],
   "author": "",

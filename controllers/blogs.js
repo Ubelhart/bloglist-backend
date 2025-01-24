@@ -3,16 +3,8 @@ const Blog = require('../models/blog')
 const User = require('../models/user')
 
 blogsRouter.get('/', async (request, response) => {
-  const decodedToken = request.user
-
-  if (decodedToken) {
-    const blogs = await Blog.find({ user: decodedToken.id }).populate('user', {
-      username: 1,
-      name: 1,
-    })
-    return response.json(blogs)
-  }
-  response.status(401).json({ message: 'Unauthorized' })
+  const blogs = await Blog.find()
+  response.status(200).json(blogs)
 })
 
 blogsRouter.get('/:id', async (request, response) => {
